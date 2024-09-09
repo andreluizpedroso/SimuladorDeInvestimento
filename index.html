@@ -12,16 +12,16 @@
         <h1>Simulador de Investimentos</h1>
         <form id="investmentForm">
             <label for="valorInicial">Valor Inicial:</label>
-            <input type="number" id="valorInicial" placeholder="Ex: 1000" required>
+            <input type="number" id="valorInicial" placeholder="Ex: 1000" max="1000000" required>
 
             <label for="numeroMeses">Número de Meses:</label>
-            <input type="number" id="numeroMeses" placeholder="Ex: 12" required>
+            <input type="number" id="numeroMeses" placeholder="Ex: 12" max="600" required>
 
             <label for="rendimentoPercentual">Rendimento Mensal (%):</label>
-            <input type="number" id="rendimentoPercentual" step="0.01" placeholder="Ex: 0.8" required>
+            <input type="number" id="rendimentoPercentual" step="0.01" placeholder="Ex: 0.8" max="5" required>
 
             <label for="aporteMensal">Aporte Mensal:</label>
-            <input type="number" id="aporteMensal" placeholder="Ex: 100" required>
+            <input type="number" id="aporteMensal" placeholder="Ex: 100" max="1000000" required>
 
             <button type="submit">Calcular</button>
         </form>
