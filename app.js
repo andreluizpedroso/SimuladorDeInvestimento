@@ -4,30 +4,51 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
     // Captura os valores inseridos pelo usuário
     const valorInicial = parseFloat(document.getElementById('valorInicial').value);
     const numeroMeses = parseInt(document.getElementById('numeroMeses').value);
-    const rendimentoPercentual = parseFloat(document.getElementById('rendimentoPercentual').value) / 100;
+    const rendimentoPercentual = parseFloat(document.getElementById('rendimentoPercentual').value);
     const aporteMensal = parseFloat(document.getElementById('aporteMensal').value);
 
-    // Referência ao campo de número de meses e mensagem de erro
+    // Referências aos campos e mensagens de erro
+    const valorInicialInput = document.getElementById('valorInicial');
     const numeroMesesInput = document.getElementById('numeroMeses');
-    const erroMensagem = document.querySelector('.error-message');
+    const rendimentoPercentualInput = document.getElementById('rendimentoPercentual');
+    const aporteMensalInput = document.getElementById('aporteMensal');
 
-    // Limpa mensagens e estilos de erro anteriores
-    numeroMesesInput.classList.remove('error');
-    if (erroMensagem) erroMensagem.remove();
+    // Limpeza de mensagens e estilos de erro anteriores
+    const inputs = [valorInicialInput, numeroMesesInput, rendimentoPercentualInput, aporteMensalInput];
+    inputs.forEach(input => input.classList.remove('error'));
+    document.querySelectorAll('.error-message').forEach(msg => msg.remove());
 
-    // Verificação do limite de meses
-    if (numeroMeses > 600) {
-        // Adiciona a classe de erro e exibe a mensagem
-        numeroMesesInput.classList.add('error');
+    let valid = true;
 
-        // Cria a mensagem de erro abaixo do campo
+    // Função para adicionar erro
+    const adicionarErro = (input, mensagem) => {
+        input.classList.add('error');
         const mensagemErro = document.createElement('div');
-        mensagemErro.textContent = "O número máximo de meses permitido para a simulação é 600.";
+        mensagemErro.textContent = mensagem;
         mensagemErro.classList.add('error-message');
-        numeroMesesInput.parentNode.insertBefore(mensagemErro, numeroMesesInput.nextSibling);
+        input.parentNode.insertBefore(mensagemErro, input.nextSibling);
+        valid = false;
+    };
 
-        return;
+    // Verificações de limite
+    if (numeroMeses > 600) {
+        adicionarErro(numeroMesesInput, "O número máximo de meses permitido para a simulação é 600.");
     }
+
+    if (valorInicial > 1000000) {
+        adicionarErro(valorInicialInput, "O valor inicial máximo permitido é de R$ 1.000.000,00.");
+    }
+
+    if (aporteMensal > 1000000) {
+        adicionarErro(aporteMensalInput, "O aporte mensal máximo permitido é de R$ 1.000.000,00.");
+    }
+
+    if (rendimentoPercentual > 5) {
+        adicionarErro(rendimentoPercentualInput, "O rendimento mensal máximo permitido é de 5%.");
+    }
+
+    // Interrompe a execução caso algum valor seja inválido
+    if (!valid) return;
 
     let montanteFinal = valorInicial;
     let saldos = [valorInicial];
@@ -35,7 +56,7 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
 
     // Calcula o montante com aportes mensais e rendimento composto
     for (let mes = 1; mes <= numeroMeses; mes++) {
-        let rendimento = montanteFinal * rendimentoPercentual;
+        let rendimento = montanteFinal * (rendimentoPercentual / 100);
         rendimentos.push(rendimento);
         montanteFinal += rendimento + aporteMensal;
         saldos.push(montanteFinal);
