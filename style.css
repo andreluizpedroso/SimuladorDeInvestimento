@@ -1,3 +1,4 @@
+/* CSS para o layout */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -39,6 +40,7 @@ input {
     font-size: 14px;
 }
 
+/* Estilo dos botões */
 button {
     margin-top: 20px;
     padding: 10px;
@@ -54,18 +56,18 @@ button:hover {
     background-color: #0056b3;
 }
 
-.resultado {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+/* Estilo da mensagem de erro */
+input.error {
+    border-color: red;
 }
 
-.hidden {
-    display: none;
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
+/* Estilo do botão de nova simulação */
 button#novaSimulacao {
     margin-top: 10px;
     padding: 10px;
@@ -79,6 +81,18 @@ button#novaSimulacao {
 
 button#novaSimulacao:hover {
     background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+.resultado {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
 }
 
 table {
