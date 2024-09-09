@@ -38,7 +38,6 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
                 <th>Rendimento</th>
             </tr>`;
 
-    // Ajuste para remover a última linha onde o rendimento é zero
     for (let i = 0; i < rendimentos.length; i++) {
         resultadoHTML += `<tr>
             <td>${i}</td>
@@ -47,5 +46,22 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
         </tr>`;
     }
 
+    resultadoHTML += `</table>`;
+
     document.getElementById('resultado').innerHTML = resultadoHTML;
+
+    // Mostra o botão de nova simulação
+    document.getElementById('novaSimulacao').classList.remove('hidden');
+});
+
+// Função para limpar o resultado e iniciar uma nova simulação
+document.getElementById('novaSimulacao').addEventListener('click', function () {
+    // Limpa os campos de entrada
+    document.getElementById('investmentForm').reset();
+
+    // Limpa o conteúdo dos resultados
+    document.getElementById('resultado').innerHTML = '';
+
+    // Esconde o botão de nova simulação
+    this.classList.add('hidden');
 });
