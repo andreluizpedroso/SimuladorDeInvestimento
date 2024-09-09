@@ -7,6 +7,28 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
     const rendimentoPercentual = parseFloat(document.getElementById('rendimentoPercentual').value) / 100;
     const aporteMensal = parseFloat(document.getElementById('aporteMensal').value);
 
+    // Referência ao campo de número de meses e mensagem de erro
+    const numeroMesesInput = document.getElementById('numeroMeses');
+    const erroMensagem = document.querySelector('.error-message');
+
+    // Limpa mensagens e estilos de erro anteriores
+    numeroMesesInput.classList.remove('error');
+    if (erroMensagem) erroMensagem.remove();
+
+    // Verificação do limite de meses
+    if (numeroMeses > 600) {
+        // Adiciona a classe de erro e exibe a mensagem
+        numeroMesesInput.classList.add('error');
+
+        // Cria a mensagem de erro abaixo do campo
+        const mensagemErro = document.createElement('div');
+        mensagemErro.textContent = "O número máximo de meses permitido para a simulação é 600.";
+        mensagemErro.classList.add('error-message');
+        numeroMesesInput.parentNode.insertBefore(mensagemErro, numeroMesesInput.nextSibling);
+
+        return;
+    }
+
     let montanteFinal = valorInicial;
     let saldos = [valorInicial];
     let rendimentos = [];
