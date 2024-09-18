@@ -70,8 +70,8 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
     // Captura o rendimento do último mês corretamente
     let rendimentoUltimoMes = rendimentos[rendimentos.length - 1];
 
-    // Aqui ajustamos o valor para o saldo acumulado correto (último valor do array de saldos)
-    let saldoFinalCorreto = saldos[saldos.length - 1];
+    // Corrigido para pegar o saldo do penúltimo mês (último saldo acumulado antes de adicionar o rendimento final)
+    let saldoFinalCorreto = saldos[saldos.length - 2];
 
     // Exibe os resultados detalhados na tela
     let resultadoHTML = `<h2>Resultados:</h2>
