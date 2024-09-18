@@ -99,3 +99,15 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
     // Mostra o botão de nova simulação
     document.getElementById('novaSimulacao').classList.remove('hidden');
 });
+
+// Função para limpar o resultado e iniciar uma nova simulação
+document.getElementById('novaSimulacao').addEventListener('click', function () {
+    // Limpa os campos de entrada
+    document.getElementById('investmentForm').reset();
+
+    // Limpa o conteúdo dos resultados
+    document.getElementById('resultado').innerHTML = '';
+
+    // Esconde o botão de nova simulação
+    this.classList.add('hidden');
+});
