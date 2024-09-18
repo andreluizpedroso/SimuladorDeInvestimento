@@ -70,9 +70,12 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
     // Captura o rendimento do último mês corretamente
     let rendimentoUltimoMes = rendimentos[rendimentos.length - 1];
 
+    // Aqui ajustamos o valor para o saldo acumulado correto (último valor do array de saldos)
+    let saldoFinalCorreto = saldos[saldos.length - 1];
+
     // Exibe os resultados detalhados na tela
     let resultadoHTML = `<h2>Resultados:</h2>
-        <p>O montante final após ${numeroMeses} meses é: <strong>${formatarMoeda(montanteFinal)}</strong> 
+        <p>O montante final após ${numeroMeses} meses é: <strong>${formatarMoeda(saldoFinalCorreto)}</strong> 
         com rendimento de <strong>${formatarMoeda(rendimentoUltimoMes)}</strong> no último mês.</p>
         <table>
             <tr>
@@ -95,16 +98,4 @@ document.getElementById('investmentForm').addEventListener('submit', function (e
 
     // Mostra o botão de nova simulação
     document.getElementById('novaSimulacao').classList.remove('hidden');
-});
-
-// Função para limpar o resultado e iniciar uma nova simulação
-document.getElementById('novaSimulacao').addEventListener('click', function () {
-    // Limpa os campos de entrada
-    document.getElementById('investmentForm').reset();
-
-    // Limpa o conteúdo dos resultados
-    document.getElementById('resultado').innerHTML = '';
-
-    // Esconde o botão de nova simulação
-    this.classList.add('hidden');
 });
