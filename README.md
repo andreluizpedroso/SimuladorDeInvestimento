@@ -63,11 +63,11 @@ Este projeto está sob a licença **MIT**.
 
 ---
 
-### 👨‍💻 Autor
-**André Luiz Pedroso**  
-LinkedIn: https://www.linkedin.com/in/andreluizpedroso/
-GitHub: https://github.com/andreluizpedroso
-Vercel: https://simulador-delta.vercel.app/
+👨‍💻 **Autor**  
+André Luiz Pedroso  
+LinkedIn: [https://www.linkedin.com/in/andreluizpedroso/](https://www.linkedin.com/in/andreluizpedroso/)  
+GitHub: [https://github.com/andreluizpedroso](https://github.com/andreluizpedroso)  
+Vercel: [https://simulador-delta.vercel.app/](https://simulador-delta.vercel.app/)  
 
 ---
 
